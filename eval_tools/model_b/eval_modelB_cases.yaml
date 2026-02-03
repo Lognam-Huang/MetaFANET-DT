@@ -1,0 +1,43 @@
+# eval_cases.yaml
+meta:
+  version: 1
+  name: "raleigh_city_eval_cases"
+  coord_frame: "world"          # 与 env 一致的坐标系
+  units: "meters"
+  scene_bounds:
+    x: [-1000, 1000]
+    y: [-1000, 1000]
+    z: [40, 60]                 # 与 task height_min/max 对齐
+  num_uavs: 5
+  num_targets: 5                # 如果你任务 targets 数量不是 5，改成你的真实值
+
+cases:
+  - id: "S1_open_near"
+    description: "open area, short travel"
+    uav_pos:
+      - [-800, -800, 50]
+      - [-800,  800, 50]
+      - [ 800, -800, 50]
+      - [ 800,  800, 50]
+      - [   0,    0, 50]
+    targets:
+      - [-600, -600, 50]
+      - [-600,  600, 50]
+      - [ 600, -600, 50]
+      - [ 600,  600, 50]
+      - [ 200,    0, 50]
+
+  - id: "M1_near_buildings"
+    description: "targets near building edges"
+    uav_pos:
+      - [-900, 0, 50]
+      - [-700, 0, 50]
+      - [ 700, 0, 50]
+      - [ 900, 0, 50]
+      - [   0, 0, 50]
+    targets:
+      - [-200, 300, 50]
+      - [-100, 350, 50]
+      - [ 100, 350, 50]
+      - [ 200, 300, 50]
+      - [   0, 450, 50]

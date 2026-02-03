@@ -1,0 +1,43 @@
+# ============================================================
+# Task configuration for 3D UAV navigation: Raleigh City
+# ============================================================
+
+# Path relative to the training script
+json_path: /home/jhuang52/Projects/metaRL_merged/scenarios/raleigh_buildings.json
+
+
+num_uavs: 5
+max_steps: 800
+
+# UAV Movement
+uav_speed: 4.0
+height_min: 40.0
+height_max: 60.0
+
+# Reward parameters (The "Improvement" logic)
+reward_goal: 25.0
+reward_step: -0.01       # Penalty per tick to encourage efficiency
+reward_collision: -20.0  # Building collision
+reward_uav_collision: -10.0 # Agent-agent collision
+
+# Collision Radius
+uav_collision_radius: 5.0
+
+# Task Switches
+use_building_collision: true
+randomize_start_positions: true
+randomize_targets: true
+
+# Scene bounds (recommended)
+scene_x_min: -1000.0
+scene_x_max:  1000.0
+scene_y_min: -1000.0
+scene_y_max:  1000.0
+
+# Target height range (optional; if omitted, use height_min/height_max)
+target_height_min: 40.0
+target_height_max: 60.0
+
+# Rejection sampling controls
+reset_rejection_max_tries: 50
+reset_rejection_oversample: 4

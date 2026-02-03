@@ -1,0 +1,1404 @@
+<?xml version="1.0" ?>
+<scene version="2.1.0">
+  <integrator type="path" id="elm__0" name="elm__0">
+    <integer name="max_depth" value="12"/>
+  </integrator>
+  <bsdf type="twosided" id="mat-itu_concrete" name="mat-itu_concrete">
+    <bsdf type="diffuse" name="bsdf">
+      <rgb name="reflectance" value="0.800000 0.800000 0.800000"/>
+    </bsdf>
+  </bsdf>
+  <bsdf type="twosided" id="mat-itu_wet_ground" name="mat-itu_wet_ground">
+    <bsdf type="diffuse" name="bsdf">
+      <rgb name="reflectance" value="0.800000 0.800000 0.800000"/>
+    </bsdf>
+  </bsdf>
+  <shape type="ply" id="elm__172" name="elm__172">
+    <string name="filename" value="meshes/None_buildings-d4c7b7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__173" name="elm__173">
+    <string name="filename" value="meshes/None_buildings-black.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__174" name="elm__174">
+    <string name="filename" value="meshes/None_buildings-525c5a.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__175" name="elm__175">
+    <string name="filename" value="meshes/None_buildings-eaeeea.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__176" name="elm__176">
+    <string name="filename" value="meshes/None_buildings-e9e9e7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__177" name="elm__177">
+    <string name="filename" value="meshes/None_buildings-3e323f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__178" name="elm__178">
+    <string name="filename" value="meshes/None_buildings-748d89.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__179" name="elm__179">
+    <string name="filename" value="meshes/None_buildings-cdc0b9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__180" name="elm__180">
+    <string name="filename" value="meshes/None_buildings-898c86.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__181" name="elm__181">
+    <string name="filename" value="meshes/None_buildings-5a6063.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__182" name="elm__182">
+    <string name="filename" value="meshes/None_buildings-838580.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__183" name="elm__183">
+    <string name="filename" value="meshes/None_buildings-wall.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__184" name="elm__184">
+    <string name="filename" value="meshes/None_buildings-roof.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__185" name="elm__185">
+    <string name="filename" value="meshes/None_buildings-dadfc2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__186" name="elm__186">
+    <string name="filename" value="meshes/None_buildings-eeece3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__187" name="elm__187">
+    <string name="filename" value="meshes/None_buildings-7e7667.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__188" name="elm__188">
+    <string name="filename" value="meshes/None_buildings-825342.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__189" name="elm__189">
+    <string name="filename" value="meshes/None_buildings-f4f2e9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__190" name="elm__190">
+    <string name="filename" value="meshes/None_buildings-0e0e15.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__191" name="elm__191">
+    <string name="filename" value="meshes/None_buildings-cfbfa2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__192" name="elm__192">
+    <string name="filename" value="meshes/None_buildings-f8faf7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__193" name="elm__193">
+    <string name="filename" value="meshes/None_buildings-f6f8f3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__194" name="elm__194">
+    <string name="filename" value="meshes/None_buildings-ba7e5e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__195" name="elm__195">
+    <string name="filename" value="meshes/None_buildings-384149.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__196" name="elm__196">
+    <string name="filename" value="meshes/None_buildings-3a444b.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__197" name="elm__197">
+    <string name="filename" value="meshes/None_buildings-cecfc6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__198" name="elm__198">
+    <string name="filename" value="meshes/None_buildings-4b5153.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__199" name="elm__199">
+    <string name="filename" value="meshes/None_buildings-c1ae98.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__200" name="elm__200">
+    <string name="filename" value="meshes/None_buildings-f3f2ed.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__201" name="elm__201">
+    <string name="filename" value="meshes/None_buildings-f5f5ef.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__202" name="elm__202">
+    <string name="filename" value="meshes/None_buildings-e4e0d8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__203" name="elm__203">
+    <string name="filename" value="meshes/None_buildings-837e76.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__204" name="elm__204">
+    <string name="filename" value="meshes/None_buildings-ffffdd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__205" name="elm__205">
+    <string name="filename" value="meshes/None_buildings-664422.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__206" name="elm__206">
+    <string name="filename" value="meshes/None_buildings-cdbca4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__207" name="elm__207">
+    <string name="filename" value="meshes/None_buildings-626c68.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__208" name="elm__208">
+    <string name="filename" value="meshes/None_buildings-333300.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__209" name="elm__209">
+    <string name="filename" value="meshes/None_buildings-663300.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__210" name="elm__210">
+    <string name="filename" value="meshes/None_buildings-996633.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__211" name="elm__211">
+    <string name="filename" value="meshes/None_buildings-e5d3b4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__212" name="elm__212">
+    <string name="filename" value="meshes/None_buildings-e6e6dd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__213" name="elm__213">
+    <string name="filename" value="meshes/None_buildings-687571.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__214" name="elm__214">
+    <string name="filename" value="meshes/None_buildings-b98562.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__215" name="elm__215">
+    <string name="filename" value="meshes/None_buildings-986c5f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__216" name="elm__216">
+    <string name="filename" value="meshes/None_buildings-454c4e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__217" name="elm__217">
+    <string name="filename" value="meshes/None_buildings-e7eaec.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__218" name="elm__218">
+    <string name="filename" value="meshes/None_buildings-e1e3dd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__219" name="elm__219">
+    <string name="filename" value="meshes/None_buildings-4b5254.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__220" name="elm__220">
+    <string name="filename" value="meshes/None_buildings-874c41.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__221" name="elm__221">
+    <string name="filename" value="meshes/None_buildings-grey.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__222" name="elm__222">
+    <string name="filename" value="meshes/None_buildings-aa9988.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__223" name="elm__223">
+    <string name="filename" value="meshes/None_buildings-5c4329.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__224" name="elm__224">
+    <string name="filename" value="meshes/None_buildings-white.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__225" name="elm__225">
+    <string name="filename" value="meshes/None_buildings-9f7d78.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__226" name="elm__226">
+    <string name="filename" value="meshes/None_buildings-545b5a.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__227" name="elm__227">
+    <string name="filename" value="meshes/None_buildings-a58883.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__228" name="elm__228">
+    <string name="filename" value="meshes/None_buildings-f1f3ee.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__229" name="elm__229">
+    <string name="filename" value="meshes/None_buildings-c4bdae.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__230" name="elm__230">
+    <string name="filename" value="meshes/None_buildings-f8f9f5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__231" name="elm__231">
+    <string name="filename" value="meshes/None_buildings-b0b7c0.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__232" name="elm__232">
+    <string name="filename" value="meshes/None_buildings-4f5557.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__233" name="elm__233">
+    <string name="filename" value="meshes/None_buildings-b4b2ab.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__234" name="elm__234">
+    <string name="filename" value="meshes/None_buildings-72746e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__235" name="elm__235">
+    <string name="filename" value="meshes/None_buildings-adbdbf.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__236" name="elm__236">
+    <string name="filename" value="meshes/None_buildings-b0a188.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__237" name="elm__237">
+    <string name="filename" value="meshes/None_buildings-464d4f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__238" name="elm__238">
+    <string name="filename" value="meshes/None_buildings-464d50.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__239" name="elm__239">
+    <string name="filename" value="meshes/None_buildings-98958b.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__240" name="elm__240">
+    <string name="filename" value="meshes/None_buildings-f9fbfa.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__241" name="elm__241">
+    <string name="filename" value="meshes/None_buildings-4c5254.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__242" name="elm__242">
+    <string name="filename" value="meshes/None_buildings-62635f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__243" name="elm__243">
+    <string name="filename" value="meshes/None_buildings-f4f6f5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__244" name="elm__244">
+    <string name="filename" value="meshes/None_buildings-d0ccb2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__245" name="elm__245">
+    <string name="filename" value="meshes/None_buildings-f7f9f6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__246" name="elm__246">
+    <string name="filename" value="meshes/None_buildings-f5f5ee.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__247" name="elm__247">
+    <string name="filename" value="meshes/None_buildings-f8f8f6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__248" name="elm__248">
+    <string name="filename" value="meshes/None_buildings-aab1ba.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__249" name="elm__249">
+    <string name="filename" value="meshes/None_buildings-515656.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__250" name="elm__250">
+    <string name="filename" value="meshes/None_buildings-f4f4ef.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__251" name="elm__251">
+    <string name="filename" value="meshes/None_buildings-d8d5c4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__252" name="elm__252">
+    <string name="filename" value="meshes/None_buildings-010508.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__253" name="elm__253">
+    <string name="filename" value="meshes/None_buildings-c5cbce.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__254" name="elm__254">
+    <string name="filename" value="meshes/None_buildings-d4d7db.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__255" name="elm__255">
+    <string name="filename" value="meshes/None_buildings-e7d7bb.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__256" name="elm__256">
+    <string name="filename" value="meshes/None_buildings-b2bace.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__257" name="elm__257">
+    <string name="filename" value="meshes/None_buildings-bcb1a4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__258" name="elm__258">
+    <string name="filename" value="meshes/None_buildings-5b5f62.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__259" name="elm__259">
+    <string name="filename" value="meshes/None_buildings-e7e7e7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__260" name="elm__260">
+    <string name="filename" value="meshes/None_buildings-f8f8f8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__261" name="elm__261">
+    <string name="filename" value="meshes/None_buildings-a3957e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__262" name="elm__262">
+    <string name="filename" value="meshes/None_buildings-a59f94.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__263" name="elm__263">
+    <string name="filename" value="meshes/None_buildings-454a49.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__264" name="elm__264">
+    <string name="filename" value="meshes/None_buildings-cecfc2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__265" name="elm__265">
+    <string name="filename" value="meshes/None_buildings-brown.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__266" name="elm__266">
+    <string name="filename" value="meshes/None_buildings-cdbe98.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__267" name="elm__267">
+    <string name="filename" value="meshes/None_buildings-656065.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__268" name="elm__268">
+    <string name="filename" value="meshes/None_buildings-ece2cf.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__269" name="elm__269">
+    <string name="filename" value="meshes/None_buildings-c7705e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__270" name="elm__270">
+    <string name="filename" value="meshes/None_buildings-4d4d4d.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__271" name="elm__271">
+    <string name="filename" value="meshes/None_buildings-bd9683.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__272" name="elm__272">
+    <string name="filename" value="meshes/None_buildings-777c7c.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__273" name="elm__273">
+    <string name="filename" value="meshes/None_buildings-585f61.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__274" name="elm__274">
+    <string name="filename" value="meshes/None_buildings-f7f9f8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__275" name="elm__275">
+    <string name="filename" value="meshes/None_buildings-fefdf9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__276" name="elm__276">
+    <string name="filename" value="meshes/None_buildings-f5f7f4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__277" name="elm__277">
+    <string name="filename" value="meshes/None_buildings-475456.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__278" name="elm__278">
+    <string name="filename" value="meshes/None_buildings-a98771.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__279" name="elm__279">
+    <string name="filename" value="meshes/None_buildings-9c918e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__280" name="elm__280">
+    <string name="filename" value="meshes/None_buildings-f6f8f5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__281" name="elm__281">
+    <string name="filename" value="meshes/None_buildings-33ccff.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__282" name="elm__282">
+    <string name="filename" value="meshes/None_buildings-666666.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__283" name="elm__283">
+    <string name="filename" value="meshes/None_buildings-cc9933.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__284" name="elm__284">
+    <string name="filename" value="meshes/None_buildings-red.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__285" name="elm__285">
+    <string name="filename" value="meshes/None_buildings-eeeeee.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__286" name="elm__286">
+    <string name="filename" value="meshes/None_buildings-eeeebb.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__287" name="elm__287">
+    <string name="filename" value="meshes/None_buildings-999999.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__288" name="elm__288">
+    <string name="filename" value="meshes/None_buildings-eeeecc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__289" name="elm__289">
+    <string name="filename" value="meshes/None_buildings-ccffff.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__290" name="elm__290">
+    <string name="filename" value="meshes/None_buildings-97a0b7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__291" name="elm__291">
+    <string name="filename" value="meshes/None_buildings-006633.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__292" name="elm__292">
+    <string name="filename" value="meshes/None_buildings-ffffcc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__293" name="elm__293">
+    <string name="filename" value="meshes/None_buildings-ccc8c3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__294" name="elm__294">
+    <string name="filename" value="meshes/None_buildings-a4bab3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__295" name="elm__295">
+    <string name="filename" value="meshes/None_buildings-a3a9b6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__296" name="elm__296">
+    <string name="filename" value="meshes/None_buildings-737780.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__297" name="elm__297">
+    <string name="filename" value="meshes/None_buildings-b8bec8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__298" name="elm__298">
+    <string name="filename" value="meshes/None_buildings-505b78.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__299" name="elm__299">
+    <string name="filename" value="meshes/None_buildings-ffffff.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__300" name="elm__300">
+    <string name="filename" value="meshes/None_buildings-lightblue.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__301" name="elm__301">
+    <string name="filename" value="meshes/None_buildings-c9c5b9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__302" name="elm__302">
+    <string name="filename" value="meshes/None_buildings-82857d.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__303" name="elm__303">
+    <string name="filename" value="meshes/None_buildings-3a4043.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__304" name="elm__304">
+    <string name="filename" value="meshes/None_buildings-939bad.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__305" name="elm__305">
+    <string name="filename" value="meshes/None_buildings-beb6ab.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__306" name="elm__306">
+    <string name="filename" value="meshes/None_buildings-d39984.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__307" name="elm__307">
+    <string name="filename" value="meshes/None_buildings-8e8c7f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__308" name="elm__308">
+    <string name="filename" value="meshes/None_buildings-e1e2dd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__309" name="elm__309">
+    <string name="filename" value="meshes/None_buildings-23acc4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__310" name="elm__310">
+    <string name="filename" value="meshes/None_buildings-878b87.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__311" name="elm__311">
+    <string name="filename" value="meshes/None_buildings-f4f6f3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__312" name="elm__312">
+    <string name="filename" value="meshes/None_buildings-c7e3e1.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__313" name="elm__313">
+    <string name="filename" value="meshes/None_buildings-c7c7c4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__314" name="elm__314">
+    <string name="filename" value="meshes/None_buildings-fffefa.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__315" name="elm__315">
+    <string name="filename" value="meshes/None_buildings-f6f7f2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__316" name="elm__316">
+    <string name="filename" value="meshes/None_buildings-f4eee0.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__317" name="elm__317">
+    <string name="filename" value="meshes/None_buildings-96988e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__318" name="elm__318">
+    <string name="filename" value="meshes/None_buildings-f5f7f2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__319" name="elm__319">
+    <string name="filename" value="meshes/None_buildings-c5b692.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__320" name="elm__320">
+    <string name="filename" value="meshes/None_buildings-986e69.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__321" name="elm__321">
+    <string name="filename" value="meshes/None_buildings-bfbfbc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__322" name="elm__322">
+    <string name="filename" value="meshes/None_buildings-c0c0b7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__323" name="elm__323">
+    <string name="filename" value="meshes/None_buildings-dde2dc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__324" name="elm__324">
+    <string name="filename" value="meshes/None_buildings-181f37.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__325" name="elm__325">
+    <string name="filename" value="meshes/None_buildings-9f9da0.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__326" name="elm__326">
+    <string name="filename" value="meshes/None_buildings-f9f8f4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__327" name="elm__327">
+    <string name="filename" value="meshes/None_buildings-a97d6e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__328" name="elm__328">
+    <string name="filename" value="meshes/None_buildings-550000.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__329" name="elm__329">
+    <string name="filename" value="meshes/None_buildings-b8ab98.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__330" name="elm__330">
+    <string name="filename" value="meshes/None_buildings-f9fbf8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__331" name="elm__331">
+    <string name="filename" value="meshes/None_buildings-d4ede8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__332" name="elm__332">
+    <string name="filename" value="meshes/None_buildings-9c9482.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__333" name="elm__333">
+    <string name="filename" value="meshes/None_buildings-868988.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__334" name="elm__334">
+    <string name="filename" value="meshes/None_buildings-dfddd4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__335" name="elm__335">
+    <string name="filename" value="meshes/None_buildings-f9faf5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__336" name="elm__336">
+    <string name="filename" value="meshes/None_buildings-gray.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__337" name="elm__337">
+    <string name="filename" value="meshes/None_buildings-ceccc5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__338" name="elm__338">
+    <string name="filename" value="meshes/None_buildings-f6f8f7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__339" name="elm__339">
+    <string name="filename" value="meshes/None_buildings-f5f6fa.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__340" name="elm__340">
+    <string name="filename" value="meshes/None_buildings-444b4e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__341" name="elm__341">
+    <string name="filename" value="meshes/None_buildings-eeeedd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__342" name="elm__342">
+    <string name="filename" value="meshes/None_buildings-eeee88.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__344" name="elm__344">
+    <string name="filename" value="meshes/None_vegetation.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="mat-itu_wet_ground" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__346" name="elm__346">
+    <string name="filename" value="meshes/None_forest.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="mat-itu_wet_ground" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__347" name="elm__347">
+    <string name="filename" value="meshes/None_buildings_001-d4c7b7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__348" name="elm__348">
+    <string name="filename" value="meshes/None_buildings_001-black.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__349" name="elm__349">
+    <string name="filename" value="meshes/None_buildings_001-525c5a.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__350" name="elm__350">
+    <string name="filename" value="meshes/None_buildings_001-eaeeea.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__351" name="elm__351">
+    <string name="filename" value="meshes/None_buildings_001-e9e9e7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__352" name="elm__352">
+    <string name="filename" value="meshes/None_buildings_001-3e323f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__353" name="elm__353">
+    <string name="filename" value="meshes/None_buildings_001-748d89.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__354" name="elm__354">
+    <string name="filename" value="meshes/None_buildings_001-cdc0b9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__355" name="elm__355">
+    <string name="filename" value="meshes/None_buildings_001-898c86.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__356" name="elm__356">
+    <string name="filename" value="meshes/None_buildings_001-5a6063.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__357" name="elm__357">
+    <string name="filename" value="meshes/None_buildings_001-838580.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__358" name="elm__358">
+    <string name="filename" value="meshes/None_buildings_001-wall.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__359" name="elm__359">
+    <string name="filename" value="meshes/None_buildings_001-roof.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__360" name="elm__360">
+    <string name="filename" value="meshes/None_buildings_001-dadfc2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__361" name="elm__361">
+    <string name="filename" value="meshes/None_buildings_001-eeece3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__362" name="elm__362">
+    <string name="filename" value="meshes/None_buildings_001-7e7667.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__363" name="elm__363">
+    <string name="filename" value="meshes/None_buildings_001-825342.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__364" name="elm__364">
+    <string name="filename" value="meshes/None_buildings_001-f4f2e9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__365" name="elm__365">
+    <string name="filename" value="meshes/None_buildings_001-0e0e15.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__366" name="elm__366">
+    <string name="filename" value="meshes/None_buildings_001-cfbfa2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__367" name="elm__367">
+    <string name="filename" value="meshes/None_buildings_001-f8faf7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__368" name="elm__368">
+    <string name="filename" value="meshes/None_buildings_001-f6f8f3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__369" name="elm__369">
+    <string name="filename" value="meshes/None_buildings_001-ba7e5e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__370" name="elm__370">
+    <string name="filename" value="meshes/None_buildings_001-384149.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__371" name="elm__371">
+    <string name="filename" value="meshes/None_buildings_001-3a444b.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__372" name="elm__372">
+    <string name="filename" value="meshes/None_buildings_001-cecfc6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__373" name="elm__373">
+    <string name="filename" value="meshes/None_buildings_001-4b5153.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__374" name="elm__374">
+    <string name="filename" value="meshes/None_buildings_001-c1ae98.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__375" name="elm__375">
+    <string name="filename" value="meshes/None_buildings_001-f3f2ed.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__376" name="elm__376">
+    <string name="filename" value="meshes/None_buildings_001-f5f5ef.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__377" name="elm__377">
+    <string name="filename" value="meshes/None_buildings_001-e4e0d8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__378" name="elm__378">
+    <string name="filename" value="meshes/None_buildings_001-837e76.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__379" name="elm__379">
+    <string name="filename" value="meshes/None_buildings_001-ffffdd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__380" name="elm__380">
+    <string name="filename" value="meshes/None_buildings_001-664422.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__381" name="elm__381">
+    <string name="filename" value="meshes/None_buildings_001-cdbca4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__382" name="elm__382">
+    <string name="filename" value="meshes/None_buildings_001-626c68.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__383" name="elm__383">
+    <string name="filename" value="meshes/None_buildings_001-333300.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__384" name="elm__384">
+    <string name="filename" value="meshes/None_buildings_001-663300.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__385" name="elm__385">
+    <string name="filename" value="meshes/None_buildings_001-996633.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__386" name="elm__386">
+    <string name="filename" value="meshes/None_buildings_001-e5d3b4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__387" name="elm__387">
+    <string name="filename" value="meshes/None_buildings_001-e6e6dd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__388" name="elm__388">
+    <string name="filename" value="meshes/None_buildings_001-687571.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__389" name="elm__389">
+    <string name="filename" value="meshes/None_buildings_001-b98562.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__390" name="elm__390">
+    <string name="filename" value="meshes/None_buildings_001-986c5f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__391" name="elm__391">
+    <string name="filename" value="meshes/None_buildings_001-454c4e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__392" name="elm__392">
+    <string name="filename" value="meshes/None_buildings_001-e7eaec.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__393" name="elm__393">
+    <string name="filename" value="meshes/None_buildings_001-e1e3dd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__394" name="elm__394">
+    <string name="filename" value="meshes/None_buildings_001-4b5254.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__395" name="elm__395">
+    <string name="filename" value="meshes/None_buildings_001-874c41.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__396" name="elm__396">
+    <string name="filename" value="meshes/None_buildings_001-grey.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__397" name="elm__397">
+    <string name="filename" value="meshes/None_buildings_001-aa9988.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__398" name="elm__398">
+    <string name="filename" value="meshes/None_buildings_001-5c4329.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__399" name="elm__399">
+    <string name="filename" value="meshes/None_buildings_001-white.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__400" name="elm__400">
+    <string name="filename" value="meshes/None_buildings_001-9f7d78.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__401" name="elm__401">
+    <string name="filename" value="meshes/None_buildings_001-545b5a.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__402" name="elm__402">
+    <string name="filename" value="meshes/None_buildings_001-a58883.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__403" name="elm__403">
+    <string name="filename" value="meshes/None_buildings_001-f1f3ee.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__404" name="elm__404">
+    <string name="filename" value="meshes/None_buildings_001-c4bdae.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__405" name="elm__405">
+    <string name="filename" value="meshes/None_buildings_001-f8f9f5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__406" name="elm__406">
+    <string name="filename" value="meshes/None_buildings_001-b0b7c0.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__407" name="elm__407">
+    <string name="filename" value="meshes/None_buildings_001-4f5557.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__408" name="elm__408">
+    <string name="filename" value="meshes/None_buildings_001-b4b2ab.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__409" name="elm__409">
+    <string name="filename" value="meshes/None_buildings_001-72746e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__410" name="elm__410">
+    <string name="filename" value="meshes/None_buildings_001-adbdbf.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__411" name="elm__411">
+    <string name="filename" value="meshes/None_buildings_001-b0a188.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__412" name="elm__412">
+    <string name="filename" value="meshes/None_buildings_001-464d4f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__413" name="elm__413">
+    <string name="filename" value="meshes/None_buildings_001-464d50.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__414" name="elm__414">
+    <string name="filename" value="meshes/None_buildings_001-98958b.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__415" name="elm__415">
+    <string name="filename" value="meshes/None_buildings_001-f9fbfa.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__416" name="elm__416">
+    <string name="filename" value="meshes/None_buildings_001-4c5254.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__417" name="elm__417">
+    <string name="filename" value="meshes/None_buildings_001-62635f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__418" name="elm__418">
+    <string name="filename" value="meshes/None_buildings_001-f4f6f5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__419" name="elm__419">
+    <string name="filename" value="meshes/None_buildings_001-d0ccb2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__420" name="elm__420">
+    <string name="filename" value="meshes/None_buildings_001-f7f9f6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__421" name="elm__421">
+    <string name="filename" value="meshes/None_buildings_001-f5f5ee.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__422" name="elm__422">
+    <string name="filename" value="meshes/None_buildings_001-f8f8f6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__423" name="elm__423">
+    <string name="filename" value="meshes/None_buildings_001-aab1ba.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__424" name="elm__424">
+    <string name="filename" value="meshes/None_buildings_001-515656.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__425" name="elm__425">
+    <string name="filename" value="meshes/None_buildings_001-f4f4ef.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__426" name="elm__426">
+    <string name="filename" value="meshes/None_buildings_001-d8d5c4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__427" name="elm__427">
+    <string name="filename" value="meshes/None_buildings_001-010508.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__428" name="elm__428">
+    <string name="filename" value="meshes/None_buildings_001-c5cbce.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__429" name="elm__429">
+    <string name="filename" value="meshes/None_buildings_001-d4d7db.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__430" name="elm__430">
+    <string name="filename" value="meshes/None_buildings_001-e7d7bb.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__431" name="elm__431">
+    <string name="filename" value="meshes/None_buildings_001-b2bace.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__432" name="elm__432">
+    <string name="filename" value="meshes/None_buildings_001-bcb1a4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__433" name="elm__433">
+    <string name="filename" value="meshes/None_buildings_001-5b5f62.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__434" name="elm__434">
+    <string name="filename" value="meshes/None_buildings_001-e7e7e7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__435" name="elm__435">
+    <string name="filename" value="meshes/None_buildings_001-f8f8f8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__436" name="elm__436">
+    <string name="filename" value="meshes/None_buildings_001-a3957e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__437" name="elm__437">
+    <string name="filename" value="meshes/None_buildings_001-a59f94.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__438" name="elm__438">
+    <string name="filename" value="meshes/None_buildings_001-454a49.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__439" name="elm__439">
+    <string name="filename" value="meshes/None_buildings_001-cecfc2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__440" name="elm__440">
+    <string name="filename" value="meshes/None_buildings_001-brown.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__441" name="elm__441">
+    <string name="filename" value="meshes/None_buildings_001-cdbe98.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__442" name="elm__442">
+    <string name="filename" value="meshes/None_buildings_001-656065.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__443" name="elm__443">
+    <string name="filename" value="meshes/None_buildings_001-ece2cf.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__444" name="elm__444">
+    <string name="filename" value="meshes/None_buildings_001-c7705e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__445" name="elm__445">
+    <string name="filename" value="meshes/None_buildings_001-4d4d4d.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__446" name="elm__446">
+    <string name="filename" value="meshes/None_buildings_001-bd9683.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__447" name="elm__447">
+    <string name="filename" value="meshes/None_buildings_001-777c7c.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__448" name="elm__448">
+    <string name="filename" value="meshes/None_buildings_001-585f61.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__449" name="elm__449">
+    <string name="filename" value="meshes/None_buildings_001-f7f9f8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__450" name="elm__450">
+    <string name="filename" value="meshes/None_buildings_001-fefdf9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__451" name="elm__451">
+    <string name="filename" value="meshes/None_buildings_001-f5f7f4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__452" name="elm__452">
+    <string name="filename" value="meshes/None_buildings_001-475456.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__453" name="elm__453">
+    <string name="filename" value="meshes/None_buildings_001-a98771.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__454" name="elm__454">
+    <string name="filename" value="meshes/None_buildings_001-9c918e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__455" name="elm__455">
+    <string name="filename" value="meshes/None_buildings_001-f6f8f5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__456" name="elm__456">
+    <string name="filename" value="meshes/None_buildings_001-33ccff.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__457" name="elm__457">
+    <string name="filename" value="meshes/None_buildings_001-666666.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__458" name="elm__458">
+    <string name="filename" value="meshes/None_buildings_001-cc9933.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__459" name="elm__459">
+    <string name="filename" value="meshes/None_buildings_001-red.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__460" name="elm__460">
+    <string name="filename" value="meshes/None_buildings_001-eeeeee.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__461" name="elm__461">
+    <string name="filename" value="meshes/None_buildings_001-eeeebb.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__462" name="elm__462">
+    <string name="filename" value="meshes/None_buildings_001-999999.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__463" name="elm__463">
+    <string name="filename" value="meshes/None_buildings_001-eeeecc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__464" name="elm__464">
+    <string name="filename" value="meshes/None_buildings_001-ccffff.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__465" name="elm__465">
+    <string name="filename" value="meshes/None_buildings_001-97a0b7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__466" name="elm__466">
+    <string name="filename" value="meshes/None_buildings_001-006633.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__467" name="elm__467">
+    <string name="filename" value="meshes/None_buildings_001-ffffcc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__468" name="elm__468">
+    <string name="filename" value="meshes/None_buildings_001-ccc8c3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__469" name="elm__469">
+    <string name="filename" value="meshes/None_buildings_001-a4bab3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__470" name="elm__470">
+    <string name="filename" value="meshes/None_buildings_001-a3a9b6.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__471" name="elm__471">
+    <string name="filename" value="meshes/None_buildings_001-737780.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__472" name="elm__472">
+    <string name="filename" value="meshes/None_buildings_001-b8bec8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__473" name="elm__473">
+    <string name="filename" value="meshes/None_buildings_001-505b78.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__474" name="elm__474">
+    <string name="filename" value="meshes/None_buildings_001-ffffff.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__475" name="elm__475">
+    <string name="filename" value="meshes/None_buildings_001-lightblue.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__476" name="elm__476">
+    <string name="filename" value="meshes/None_buildings_001-c9c5b9.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__477" name="elm__477">
+    <string name="filename" value="meshes/None_buildings_001-82857d.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__478" name="elm__478">
+    <string name="filename" value="meshes/None_buildings_001-3a4043.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__479" name="elm__479">
+    <string name="filename" value="meshes/None_buildings_001-939bad.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__480" name="elm__480">
+    <string name="filename" value="meshes/None_buildings_001-beb6ab.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__481" name="elm__481">
+    <string name="filename" value="meshes/None_buildings_001-d39984.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__482" name="elm__482">
+    <string name="filename" value="meshes/None_buildings_001-8e8c7f.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__483" name="elm__483">
+    <string name="filename" value="meshes/None_buildings_001-e1e2dd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__484" name="elm__484">
+    <string name="filename" value="meshes/None_buildings_001-23acc4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__485" name="elm__485">
+    <string name="filename" value="meshes/None_buildings_001-878b87.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__486" name="elm__486">
+    <string name="filename" value="meshes/None_buildings_001-f4f6f3.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__487" name="elm__487">
+    <string name="filename" value="meshes/None_buildings_001-c7e3e1.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__488" name="elm__488">
+    <string name="filename" value="meshes/None_buildings_001-c7c7c4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__489" name="elm__489">
+    <string name="filename" value="meshes/None_buildings_001-fffefa.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__490" name="elm__490">
+    <string name="filename" value="meshes/None_buildings_001-f6f7f2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__491" name="elm__491">
+    <string name="filename" value="meshes/None_buildings_001-f4eee0.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__492" name="elm__492">
+    <string name="filename" value="meshes/None_buildings_001-96988e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__493" name="elm__493">
+    <string name="filename" value="meshes/None_buildings_001-f5f7f2.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__494" name="elm__494">
+    <string name="filename" value="meshes/None_buildings_001-c5b692.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__495" name="elm__495">
+    <string name="filename" value="meshes/None_buildings_001-986e69.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__496" name="elm__496">
+    <string name="filename" value="meshes/None_buildings_001-bfbfbc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__497" name="elm__497">
+    <string name="filename" value="meshes/None_buildings_001-c0c0b7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__498" name="elm__498">
+    <string name="filename" value="meshes/None_buildings_001-dde2dc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__499" name="elm__499">
+    <string name="filename" value="meshes/None_buildings_001-181f37.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__500" name="elm__500">
+    <string name="filename" value="meshes/None_buildings_001-9f9da0.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__501" name="elm__501">
+    <string name="filename" value="meshes/None_buildings_001-f9f8f4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__502" name="elm__502">
+    <string name="filename" value="meshes/None_buildings_001-a97d6e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__503" name="elm__503">
+    <string name="filename" value="meshes/None_buildings_001-550000.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__504" name="elm__504">
+    <string name="filename" value="meshes/None_buildings_001-b8ab98.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__505" name="elm__505">
+    <string name="filename" value="meshes/None_buildings_001-f9fbf8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__506" name="elm__506">
+    <string name="filename" value="meshes/None_buildings_001-d4ede8.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__507" name="elm__507">
+    <string name="filename" value="meshes/None_buildings_001-9c9482.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__508" name="elm__508">
+    <string name="filename" value="meshes/None_buildings_001-868988.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__509" name="elm__509">
+    <string name="filename" value="meshes/None_buildings_001-dfddd4.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__510" name="elm__510">
+    <string name="filename" value="meshes/None_buildings_001-f9faf5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__511" name="elm__511">
+    <string name="filename" value="meshes/None_buildings_001-gray.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__512" name="elm__512">
+    <string name="filename" value="meshes/None_buildings_001-ceccc5.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__513" name="elm__513">
+    <string name="filename" value="meshes/None_buildings_001-f6f8f7.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__514" name="elm__514">
+    <string name="filename" value="meshes/None_buildings_001-f5f6fa.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__515" name="elm__515">
+    <string name="filename" value="meshes/None_buildings_001-444b4e.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__516" name="elm__516">
+    <string name="filename" value="meshes/None_buildings_001-eeeedd.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__517" name="elm__517">
+    <string name="filename" value="meshes/None_buildings_001-eeee88.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__518" name="elm__518">
+    <string name="filename" value="meshes/None_vegetation_001.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="mat-itu_wet_ground" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__519" name="elm__519">
+    <string name="filename" value="meshes/None_forest_001.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="mat-itu_wet_ground" name="bsdf"/>
+  </shape>
+</scene>

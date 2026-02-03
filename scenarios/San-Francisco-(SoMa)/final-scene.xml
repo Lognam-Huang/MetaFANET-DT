@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<scene version="2.1.0">
+  <integrator type="path" id="elm__0" name="elm__0">
+    <integer name="max_depth" value="12"/>
+  </integrator>
+  <bsdf type="twosided" id="mat-itu_concrete" name="mat-itu_concrete">
+    <bsdf type="diffuse" name="bsdf">
+      <rgb name="reflectance" value="0.800000 0.800000 0.800000"/>
+    </bsdf>
+  </bsdf>
+  <bsdf type="twosided" id="mat-itu_wet_ground" name="mat-itu_wet_ground">
+    <bsdf type="diffuse" name="bsdf">
+      <rgb name="reflectance" value="0.800000 0.800000 0.800000"/>
+    </bsdf>
+  </bsdf>
+  <shape type="ply" id="elm__15" name="elm__15">
+    <string name="filename" value="meshes/None_buildings-wall.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__16" name="elm__16">
+    <string name="filename" value="meshes/None_buildings-roof.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__17" name="elm__17">
+    <string name="filename" value="meshes/None_buildings-c0bfbc.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__18" name="elm__18">
+    <string name="filename" value="meshes/None_buildings-cabc91.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__19" name="elm__19">
+    <string name="filename" value="meshes/None_buildings-white.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__20" name="elm__20">
+    <string name="filename" value="meshes/None_buildings-yellow.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__21" name="elm__21">
+    <string name="filename" value="meshes/None_buildings-2b2325.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__22" name="elm__22">
+    <string name="filename" value="meshes/None_buildings-707179.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__23" name="elm__23">
+    <string name="filename" value="meshes/None_buildings-9c8472.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__24" name="elm__24">
+    <string name="filename" value="meshes/None_buildings-5e5c64.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__25" name="elm__25">
+    <string name="filename" value="meshes/None_buildings-584e4a.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__26" name="elm__26">
+    <string name="filename" value="meshes/None_buildings-ffffff.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__27" name="elm__27">
+    <string name="filename" value="meshes/None_buildings-gray.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__28" name="elm__28">
+    <string name="filename" value="meshes/None_buildings-8d8d8d.ply"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__30" name="elm__30">
+    <string name="filename" value="meshes/None_vegetation.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="mat-itu_wet_ground" name="bsdf"/>
+  </shape>
+  <shape type="ply" id="elm__32" name="elm__32">
+    <string name="filename" value="meshes/None_forest.ply"/>
+    <boolean name="face_normals" value="true"/>
+    <ref id="mat-itu_wet_ground" name="bsdf"/>
+  </shape>
+</scene>

@@ -1,0 +1,5 @@
+timestamp: 2026-01-13T16:41:16.462150
+cfg_path: /home/jhuang52/Projects/metaRL_merged/inner_loop/model_a/configs/modelA_placement.json
+cwd: /home/jhuang52/Projects/metaRL_merged/inner_loop/model_a
+python: /home/jhuang52/miniconda3/envs/modelA_sb3/bin/python
+argv: train_sb3.py --cfg configs/modelA_placement.json
