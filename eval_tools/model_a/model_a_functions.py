@@ -1598,6 +1598,9 @@ def generate_gu_trajectory_csv(
 
     buildings = get_buildings_from_cfg(cfg)
 
+    print("boxes_json =", cfg.get("buildings", {}).get("boxes_json", None))
+    print("n_buildings =", len(buildings))
+
     gu_xyz, _ = sample_gus_outside_buildings(cfg, rng, n_gu=n_gu, margin=building_margin)
     gu_cfg = cfg["gu"]
     xy_region = np.asarray(gu_cfg["xy_region"], dtype=np.float32)
@@ -1734,55 +1737,8 @@ def compute_metrics_from_sinr(cfg: Dict[str, Any], sinr_db_gu_tx: np.ndarray) ->
 
 
 # ============================================================
-# SINR hook (project-dependent). We try best-effort imports.
+# SINR hook (project-dependent).
 # ============================================================
-
-# def compute_sinr_db_gu_tx(cfg: Dict[str, Any], uav_xyz: np.ndarray, gu_xyz: np.ndarray) -> np.ndarray:
-#     """
-#     This function depends on your Sionna/EnvironmentFramework integration.
-#     Since repositories differ, we do:
-#       1) Try to import a known helper if present
-#       2) Otherwise raise a clear error listing what to implement
-
-#     Expected return:
-#       sinr_db_gu_tx: (n_gu, n_tx) where n_tx = n_uav + n_bs
-#     """
-#     # ---- Try common patterns (add your real module path here if needed)
-#     tried = []
-
-#     # Pattern A: a local module in your repo
-#     try:
-#         tried.append("inner_loop.model_a.env_framework:EnvironmentFramework")
-#         from inner_loop.model_a.env_framework import EnvironmentFramework  # type: ignore
-#         ef = EnvironmentFramework(cfg)  # type: ignore
-#         return ef.compute_sinr_db_gu_tx(uav_xyz=uav_xyz, gu_xyz=gu_xyz)  # type: ignore
-#     except Exception:
-#         pass
-
-#     # Pattern B: framework.py
-#     try:
-#         tried.append("inner_loop.model_a.framework:EnvironmentFramework")
-#         from inner_loop.model_a.framework import EnvironmentFramework  # type: ignore
-#         ef = EnvironmentFramework(cfg)  # type: ignore
-#         return ef.compute_sinr_db_gu_tx(uav_xyz=uav_xyz, gu_xyz=gu_xyz)  # type: ignore
-#     except Exception:
-#         pass
-
-#     # Pattern C: env_core
-#     try:
-#         tried.append("env_core:EnvironmentFramework")
-#         from env_core import EnvironmentFramework  # type: ignore
-#         ef = EnvironmentFramework(cfg)  # type: ignore
-#         return ef.compute_sinr_db_gu_tx(uav_xyz=uav_xyz, gu_xyz=gu_xyz)  # type: ignore
-#     except Exception:
-#         pass
-
-#     raise ImportError(
-#         "compute_sinr_db_gu_tx() could not find your EnvironmentFramework/Sionna integration.\n"
-#         f"Tried imports: {tried}\n"
-#         "Fix: edit compute_sinr_db_gu_tx() to call your project’s SINR computation, and return "
-#         "(n_gu, n_tx) SINR in dB with TX=UAV+BS."
-#     )
 
 def _get_env_scene_path(cfg: Dict[str, Any]) -> str:
     if "scene_xml" not in cfg or not cfg["scene_xml"]:
