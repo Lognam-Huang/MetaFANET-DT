@@ -1,0 +1,141 @@
+{
+  "seed": 123,
+  "project_root": "/home/jhuang52/Projects/metaRL_merged",
+  "scene_xml": "scenarios/raleigh_scene/raleigh_union_square.xml",
+  "uav": {
+    "n_uav": 5,
+    "init_mode": "fixed",
+    "init_xyz": [
+      [
+        0,
+        0,
+        100
+      ],
+      [
+        500,
+        0,
+        100
+      ],
+      [
+        0,
+        500,
+        100
+      ],
+      [
+        -500,
+        0,
+        100
+      ],
+      [
+        0,
+        -500,
+        100
+      ]
+    ],
+    "bounds": [
+      [
+        -1000,
+        1000
+      ],
+      [
+        -1000,
+        1000
+      ],
+      [
+        50,
+        200
+      ]
+    ],
+    "building_margin": 1.0
+  },
+  "bs": {
+    "positions": [
+      [
+        -250,
+        -170,
+        155
+      ],
+      [
+        -310,
+        40,
+        140
+      ]
+    ],
+    "device_type": "tx",
+    "bandwidth": 50.0,
+    "signal_power": 2.0,
+    "aim_mode": "none"
+  },
+  "gu": {
+    "num_gus": 150,
+    "xy_region": [
+      [
+        -800,
+        800
+      ],
+      [
+        -800,
+        800
+      ]
+    ],
+    "height": 1.5,
+    "com_type": "rx",
+    "max_resample_attempts": 2000
+  },
+  "buildings": {
+    "boxes_json": "scenarios/raleigh_buildings.json",
+    "format": "boxes_minmax"
+  },
+  "radiomap": {
+    "max_depth": 2,
+    "num_samples": 20000,
+    "cell_size": [
+      5.0,
+      5.0
+    ]
+  },
+  "reward": {
+    "coverage_tau_db": 5.0,
+    "w_coverage": 1.0,
+    "sinr_target_db": 8.0,
+    "w_sinr_max": 0.2,
+    "w_sinr_mean": 0.5,
+    "w_sinr_min": 0.3,
+    "w_load_var": 0.2,
+    "enable_backhaul": false,
+    "backhaul_tau_db": 5.0,
+    "w_backhaul": 1.0,
+    "w_invalid_pos": 30.0
+  },
+  "sb3": {
+    "algo": "SAC",
+    "policy": "MlpPolicy",
+    "verbose": 1,
+    "algo_kwargs": {
+      "learning_rate": 0.0003,
+      "batch_size": 256,
+      "gamma": 0.99,
+      "tau": 0.005,
+      "train_freq": 1
+    }
+  },
+  "train": {
+    "total_timesteps": 2000,
+    "save_freq": 500,
+    "progress_bar": true
+  },
+  "log": {
+    "tb_dir": "runs/tb",
+    "save_dir": "runs/modelA_sb3"
+  },
+  "wandb": {
+    "enabled": true,
+    "project": "metaRL_modelA",
+    "name": "raleigh_sac_v1",
+    "tags": [
+      "modelA",
+      "raleigh",
+      "sb3"
+    ]
+  }
+}
