@@ -12,6 +12,11 @@ from gymnasium import spaces
 
 from .EnvironmentFramework import Environment
 
+try:
+    import mitsuba as mi
+except Exception:
+    mi = None
+
 
 # ----------------------------
 # Building geometry helpers
@@ -313,89 +318,139 @@ class SionnaPlacementEnv(gym.Env):
     # Gymnasium API
     # ----------------------------
 
-    def reset(self, *, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None):
-        """
-        Uses Gymnasium's RNG (self.np_random) as the single source of randomness.
-        If seed is provided, the episode becomes reproducible.
-        """
-        super().reset(seed=seed)
-        if seed is not None:
-            self.seed_value = int(seed)
+    # def reset(self, *, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None):
+    #     """
+    #     Uses Gymnasium's RNG (self.np_random) as the single source of randomness.
+    #     If seed is provided, the episode becomes reproducible.
+    #     """
+    #     super().reset(seed=seed)
+    #     if seed is not None:
+    #         self.seed_value = int(seed)
 
-        self._t = 0
+    #     self._t = 0
 
-        # Rebuild raw env for clean state
-        self.env_raw = Environment(
-            self.scene_xml,
-            position_df_path=None,
-            time_step=1,
-            ped_height=self.gu_height,
-            ped_rx=True,
-        )
+    #     # Rebuild raw env for clean state
+    #     self.env_raw = Environment(
+    #         self.scene_xml,
+    #         position_df_path=None,
+    #         time_step=1,
+    #         ped_height=self.gu_height,
+    #         ped_rx=True,
+    #     )
 
-        # Spawn UAVs (ensure valid if random; fixed will be warned if invalid)
-        init_xyz = self._get_uav_init_xyz()
-        for i in range(self.n_uav):
-            self.env_raw.addUAV(
-                mass=10,
-                efficiency=0.8,
-                pos=np.asarray(init_xyz[i], dtype=np.float32),
-                vel=np.zeros(3, dtype=np.float32),
-                color=np.array([1.0, 0.2, 0.2]),
-                bandwidth=50,
-                rotor_area=0.5,
-                signal_power=3.0,
-            )
+    #     # Spawn UAVs (ensure valid if random; fixed will be warned if invalid)
+    #     init_xyz = self._get_uav_init_xyz()
+    #     for i in range(self.n_uav):
+    #         self.env_raw.addUAV(
+    #             mass=10,
+    #             efficiency=0.8,
+    #             pos=np.asarray(init_xyz[i], dtype=np.float32),
+    #             vel=np.zeros(3, dtype=np.float32),
+    #             color=np.array([1.0, 0.2, 0.2]),
+    #             bandwidth=50,
+    #             rotor_area=0.5,
+    #             signal_power=3.0,
+    #         )
 
-        # Default orientation (if supported): straight down
-        for i in range(len(self.env_raw.uavs)):
-            if hasattr(self.env_raw.uavs[i], "lookAt"):
-                self.env_raw.uavs[i].lookAt()
+    #     # Default orientation (if supported): straight down
+    #     for i in range(len(self.env_raw.uavs)):
+    #         if hasattr(self.env_raw.uavs[i], "lookAt"):
+    #             self.env_raw.uavs[i].lookAt()
 
-        # Base stations
-        self._add_base_stations()
+    #     # Base stations
+    #     self._add_base_stations()
 
-        # GUs outside buildings
-        self._spawn_gus_outside_buildings()
+    #     # GUs outside buildings
+    #     self._spawn_gus_outside_buildings()
 
-        obs = self._build_obs()
-        info: Dict[str, Any] = {}
-        return obs, info
+    #     obs = self._build_obs()
+    #     info: Dict[str, Any] = {}
+    #     return obs, info
 
-    def step(self, action: np.ndarray):
-        assert self.env_raw is not None, "Call reset() before step()."
-        self._t += 1
+    # def step(self, action: np.ndarray):
+    #     assert self.env_raw is not None, "Call reset() before step()."
+    #     self._t += 1
 
-        # Action -> absolute UAV positions (n_uav,3)
-        target_xyz, invalid_mask = self._sanitize_uav_positions(action)
+    #     # Action -> absolute UAV positions (n_uav,3)
+    #     target_xyz, invalid_mask = self._sanitize_uav_positions(action)
 
-        # Apply UAV positions
-        cur_xyz = self._get_uav_xyz()
-        for i in range(self.n_uav):
-            if hasattr(self.env_raw, "moveAbsUAV"):
-                self.env_raw.moveAbsUAV(i, target_xyz[i], target_xyz[i] - cur_xyz[i])
-            else:
-                self.env_raw.uavs[i].pos = target_xyz[i]
+    #     # Apply UAV positions
+    #     cur_xyz = self._get_uav_xyz()
+    #     for i in range(self.n_uav):
+    #         if hasattr(self.env_raw, "moveAbsUAV"):
+    #             self.env_raw.moveAbsUAV(i, target_xyz[i], target_xyz[i] - cur_xyz[i])
+    #         else:
+    #             self.env_raw.uavs[i].pos = target_xyz[i]
 
-        # One-step placement
-        radio_map = self._compute_radiomap()
-        if self.n_gu > 0:
-            sinr_db_gu_tx = self.env_raw.getUserSINRS(radio_map)
-        else:
-            sinr_db_gu_tx = np.zeros((0, getattr(self.env_raw, "n_tx", 0)), dtype=np.float32)
+    #     # One-step placement
+    #     radio_map = self._compute_radiomap()
+    #     if self.n_gu > 0:
+    #         sinr_db_gu_tx = self.env_raw.getUserSINRS(radio_map)
+    #     else:
+    #         sinr_db_gu_tx = np.zeros((0, getattr(self.env_raw, "n_tx", 0)), dtype=np.float32)
 
-        reward, rinfo = self._compute_reward(sinr_db_gu_tx)
+    #     reward, rinfo = self._compute_reward(sinr_db_gu_tx)
 
-        # Penalty for invalid UAVs (sanitize failed)
-        invalid_uav_count = int(np.sum(invalid_mask))
-        if invalid_uav_count > 0:
-            reward -= float(self.reward_cfg.w_invalid_pos) * float(invalid_uav_count)
+    #     # Penalty for invalid UAVs (sanitize failed)
+    #     invalid_uav_count = int(np.sum(invalid_mask))
+    #     if invalid_uav_count > 0:
+    #         reward -= float(self.reward_cfg.w_invalid_pos) * float(invalid_uav_count)
 
-        obs = self._build_obs()
-        terminated = False
-        truncated = True  # 1-step episode
-        info = {**rinfo, "invalid_uav_count": invalid_uav_count}
-        return obs, float(reward), bool(terminated), bool(truncated), info
+    #     obs = self._build_obs()
+    #     terminated = False
+    #     truncated = True  # 1-step episode
+    #     info = {**rinfo, "invalid_uav_count": invalid_uav_count}
+    #     return obs, float(reward), bool(terminated), bool(truncated), info
+
+    # def step(self, action: np.ndarray):
+    #     assert self.env_raw is not None, "Call reset() before step()."
+    #     self._t += 1
+    
+    #     # Action -> absolute UAV positions (n_uav,3)
+    #     target_xyz, invalid_mask = self._sanitize_uav_positions(action)
+    
+    #     # Apply UAV positions
+    #     cur_xyz = self._get_uav_xyz()
+    #     for i in range(self.n_uav):
+    #         if hasattr(self.env_raw, "moveAbsUAV"):
+    #             self.env_raw.moveAbsUAV(i, target_xyz[i], target_xyz[i] - cur_xyz[i])
+    #         else:
+    #             self.env_raw.uavs[i].pos = target_xyz[i]
+    
+    #     # One-step placement: compute radiomap + SINR
+    #     radio_map = self._compute_radiomap()
+    #     if self.n_gu > 0:
+    #         sinr_db_gu_tx = self.env_raw.getUserSINRS(radio_map)
+    #     else:
+    #         sinr_db_gu_tx = np.zeros((0, getattr(self.env_raw, "n_tx", 0)), dtype=np.float32)
+    
+    #     reward, rinfo = self._compute_reward(sinr_db_gu_tx)
+    
+    #     # Penalty for invalid UAVs (sanitize failed)
+    #     invalid_uav_count = int(np.sum(invalid_mask))
+    #     if invalid_uav_count > 0:
+    #         reward -= float(self.reward_cfg.w_invalid_pos) * float(invalid_uav_count)
+    
+    #     obs = self._build_obs()
+    #     terminated = False
+    #     truncated = True  # 1-step episode
+    
+    #     # Debug return controls (default: don't return heavy objects during training)
+    #     dbg = self.cfg.get("debug", {}) if isinstance(self.cfg, dict) else {}
+    #     return_radiomap = bool(dbg.get("return_radiomap", False))
+    #     return_sinr = bool(dbg.get("return_sinr", False))
+    
+    #     info = {**rinfo, "invalid_uav_count": invalid_uav_count}
+    
+    #     # NOTE: returning "radio_map" can break serialization in vectorized / subprocess envs.
+    #     # Use only in evaluation (single-process) runs.
+    #     if return_sinr:
+    #         info["sinr_db_gu_tx"] = sinr_db_gu_tx  # numpy array is safe to serialize
+    #     if return_radiomap:
+    #         info["radio_map"] = radio_map  # heavy / likely non-serializable
+    
+    #     return obs, float(reward), bool(terminated), bool(truncated), info
+
 
     # ----------------------------
     # Sampling helpers (single RNG source)
@@ -560,94 +615,210 @@ class SionnaPlacementEnv(gym.Env):
             cell_size=tuple(self.radiomap_cfg.cell_size),
         )
 
+    # def _compute_reward(self, sinr_db_gu_tx: np.ndarray) -> Tuple[float, Dict[str, Any]]:
+    #     """
+    #     Normalized reward to stabilize training (especially for 1-step SAC).
+    
+    #     - coverage_frac: coverage_count / n_gu  in [0,1]
+    #     - sinr_score_norm: per-TX aggregated (max/mean/min) SINR divided by sinr_target_db and clipped
+    #     - load_var: variance of per-tx load (kept as-is per your preference)
+    
+    #     Notes:
+    #     - Uses best-tx assignment (argmax SINR per GU).
+    #     - Keeps diagnostics: per_tx_load and per_uav_load.
+    #     """
+    
+    #     n_tx = int(sinr_db_gu_tx.shape[1]) if sinr_db_gu_tx.ndim == 2 else 0
+    
+    #     # Safe defaults
+    #     coverage_count = 0
+    #     coverage_frac = 0.0
+    #     per_tx_load = np.zeros((n_tx,), dtype=np.float32)
+    #     per_uav_load = np.zeros((self.n_uav,), dtype=np.float32)
+    #     sinr_score_raw = 0.0
+    #     sinr_score_norm = 0.0
+    
+    #     if sinr_db_gu_tx.size > 0 and self.n_gu > 0 and n_tx > 0:
+    #         best_tx = np.argmax(sinr_db_gu_tx, axis=1)  # (n_gu,)
+    #         best_sinr = sinr_db_gu_tx[np.arange(self.n_gu), best_tx].astype(np.float32)
+    
+    #         covered = (best_sinr >= float(self.reward_cfg.coverage_tau_db))
+    #         coverage_count = int(np.sum(covered))
+    #         coverage_frac = float(coverage_count) / float(max(self.n_gu, 1))
+    
+    #         # Per-tx grouping
+    #         per_tx_load_list: List[int] = []
+    #         sinr_score_raw = 0.0
+    #         sinr_score_norm = 0.0
+    
+    #         # Target for normalization (avoid div-by-zero)
+    #         tgt = float(getattr(self.reward_cfg, "sinr_target_db", 8.0))
+    #         tgt = max(tgt, 1e-6)
+    
+    #         # Clip to prevent reward explosion from pathological SINR values
+    #         # (If you prefer, make these cfg fields later.)
+    #         clip_low = -20.0
+    #         clip_high = 40.0
+    
+    #         # If you want sinr normalization to be bounded, clip normalized values too
+    #         # Example: [-2, 5] means -16dB -> -2, 40dB -> 5 when tgt=8
+    #         norm_clip_low = -2.0
+    #         norm_clip_high = 5.0
+    
+    #         for tx in range(n_tx):
+    #             idx = np.where(best_tx == tx)[0]
+    #             per_tx_load_list.append(int(len(idx)))
+    #             if len(idx) == 0:
+    #                 continue
+    
+    #             s = best_sinr[idx]
+    
+    #             # Raw (still useful for debugging)
+    #             s_max = float(np.max(s))
+    #             s_mean = float(np.mean(s))
+    #             s_min = float(np.min(s))
+    #             sinr_score_raw += (
+    #                 self.reward_cfg.w_sinr_max * s_max
+    #                 + self.reward_cfg.w_sinr_mean * s_mean
+    #                 + self.reward_cfg.w_sinr_min * s_min
+    #             )
+    
+    #             # Normalized + clipped
+    #             s_clip = np.clip(s, clip_low, clip_high)
+    #             s_max_n = float(np.clip(np.max(s_clip) / tgt, norm_clip_low, norm_clip_high))
+    #             s_mean_n = float(np.clip(np.mean(s_clip) / tgt, norm_clip_low, norm_clip_high))
+    #             s_min_n = float(np.clip(np.min(s_clip) / tgt, norm_clip_low, norm_clip_high))
+    #             sinr_score_norm += (
+    #                 self.reward_cfg.w_sinr_max * s_max_n
+    #                 + self.reward_cfg.w_sinr_mean * s_mean_n
+    #                 + self.reward_cfg.w_sinr_min * s_min_n
+    #             )
+    
+    #         per_tx_load = np.asarray(per_tx_load_list, dtype=np.float32)
+    #         if len(per_tx_load) >= self.n_uav:
+    #             per_uav_load = per_tx_load[: self.n_uav].copy()
+    #         else:
+    #             per_uav_load = np.zeros((self.n_uav,), dtype=np.float32)
+    
+    #     load_var = float(np.var(per_tx_load)) if len(per_tx_load) > 1 else 0.0
+    
+    #     # Use normalized coverage + normalized sinr score (this is the key change)
+    #     reward = (
+    #         self.reward_cfg.w_coverage * float(coverage_frac)
+    #         + float(sinr_score_norm)
+    #         - self.reward_cfg.w_load_var * float(load_var)
+    #     )
+    
+    #     info = {
+    #         # Coverage
+    #         "coverage_count": int(coverage_count),
+    #         "coverage_frac": float(coverage_frac),
+    
+    #         # SINR diagnostics
+    #         "sinr_target_db": float(getattr(self.reward_cfg, "sinr_target_db", 8.0)),
+    #         "sinr_score_raw": float(sinr_score_raw),
+    #         "sinr_score_norm": float(sinr_score_norm),
+    
+    #         # Load diagnostics
+    #         "load_var": float(load_var),
+    #         "per_tx_load": per_tx_load,
+    #         "per_uav_load": per_uav_load,
+    #         "per_uav_load_max": float(np.max(per_uav_load)) if per_uav_load.size else 0.0,
+    #         "per_uav_load_mean": float(np.mean(per_uav_load)) if per_uav_load.size else 0.0,
+    #         "per_uav_load_min": float(np.min(per_uav_load)) if per_uav_load.size else 0.0,
+    #     }
+    #     return float(reward), info
+
     def _compute_reward(self, sinr_db_gu_tx: np.ndarray) -> Tuple[float, Dict[str, Any]]:
         """
-        Normalized reward to stabilize training (especially for 1-step SAC).
+        Reward (GU-aggregated):
+          - For each GU, pick best TX by SINR: best_sinr[gu] = max_t sinr_db_gu_tx[gu, t]
+          - Compute SINR summary stats over ALL GUs' best_sinr: max/mean/min (raw + normalized/clipped)
+          - Coverage is fraction of GUs with best_sinr >= coverage_tau_db
+          - Load is computed from best_tx assignments (per-tx counts); load_var = var(per_tx_load)
     
-        - coverage_frac: coverage_count / n_gu  in [0,1]
-        - sinr_score_norm: per-TX aggregated (max/mean/min) SINR divided by sinr_target_db and clipped
-        - load_var: variance of per-tx load (kept as-is per your preference)
-    
-        Notes:
-        - Uses best-tx assignment (argmax SINR per GU).
-        - Keeps diagnostics: per_tx_load and per_uav_load.
+        Assumes sinr_db_gu_tx is in dB.
         """
-    
-        n_tx = int(sinr_db_gu_tx.shape[1]) if sinr_db_gu_tx.ndim == 2 else 0
+        n_tx = int(sinr_db_gu_tx.shape[1]) if (sinr_db_gu_tx.ndim == 2) else 0
     
         # Safe defaults
         coverage_count = 0
         coverage_frac = 0.0
         per_tx_load = np.zeros((n_tx,), dtype=np.float32)
         per_uav_load = np.zeros((self.n_uav,), dtype=np.float32)
+    
         sinr_score_raw = 0.0
         sinr_score_norm = 0.0
     
-        if sinr_db_gu_tx.size > 0 and self.n_gu > 0 and n_tx > 0:
-            best_tx = np.argmax(sinr_db_gu_tx, axis=1)  # (n_gu,)
-            best_sinr = sinr_db_gu_tx[np.arange(self.n_gu), best_tx].astype(np.float32)
+        # Handle degenerate cases
+        if self.n_gu <= 0 or n_tx <= 0 or sinr_db_gu_tx.size == 0:
+            load_var = 0.0
+            reward = (
+                self.reward_cfg.w_coverage * float(coverage_frac)
+                + float(sinr_score_norm)
+                - self.reward_cfg.w_load_var * float(load_var)
+            )
+            info = {
+                "coverage_count": int(coverage_count),
+                "coverage_frac": float(coverage_frac),
+                "sinr_target_db": float(getattr(self.reward_cfg, "sinr_target_db", 8.0)),
+                "sinr_score_raw": float(sinr_score_raw),
+                "sinr_score_norm": float(sinr_score_norm),
+                "load_var": float(load_var),
+                "per_tx_load": per_tx_load,
+                "per_uav_load": per_uav_load,
+                "per_uav_load_max": 0.0,
+                "per_uav_load_mean": 0.0,
+                "per_uav_load_min": 0.0,
+            }
+            return float(reward), info
     
-            covered = (best_sinr >= float(self.reward_cfg.coverage_tau_db))
-            coverage_count = int(np.sum(covered))
-            coverage_frac = float(coverage_count) / float(max(self.n_gu, 1))
+        # --- Best-TX association (per GU) ---
+        best_tx = np.argmax(sinr_db_gu_tx, axis=1).astype(np.int64)  # (n_gu,)
+        best_sinr = sinr_db_gu_tx[np.arange(self.n_gu), best_tx].astype(np.float32)  # (n_gu,)
     
-            # Per-tx grouping
-            per_tx_load_list: List[int] = []
-            sinr_score_raw = 0.0
-            sinr_score_norm = 0.0
+        # --- Coverage (per GU) ---
+        covered = (best_sinr >= float(self.reward_cfg.coverage_tau_db))
+        coverage_count = int(np.sum(covered))
+        coverage_frac = float(coverage_count) / float(max(self.n_gu, 1))
     
-            # Target for normalization (avoid div-by-zero)
-            tgt = float(getattr(self.reward_cfg, "sinr_target_db", 8.0))
-            tgt = max(tgt, 1e-6)
+        # --- Load (per TX) ---
+        per_tx_load = np.bincount(best_tx, minlength=n_tx).astype(np.float32)
+        # "per_uav_load" assumes TX ordering: first n_uav are UAVs.
+        # If you later confirm ordering differs, we should map by names instead.
+        per_uav_load = per_tx_load[: self.n_uav].copy() if n_tx >= self.n_uav else np.zeros((self.n_uav,), dtype=np.float32)
+        load_var = float(np.var(per_tx_load)) if per_tx_load.size > 1 else 0.0
     
-            # Clip to prevent reward explosion from pathological SINR values
-            # (If you prefer, make these cfg fields later.)
-            clip_low = -20.0
-            clip_high = 40.0
+        # --- SINR score over ALL GUs (raw + normalized/clipped) ---
+        s_max = float(np.max(best_sinr))
+        s_mean = float(np.mean(best_sinr))
+        s_min = float(np.min(best_sinr))
+        sinr_score_raw = (
+            self.reward_cfg.w_sinr_max * s_max
+            + self.reward_cfg.w_sinr_mean * s_mean
+            + self.reward_cfg.w_sinr_min * s_min
+        )
     
-            # If you want sinr normalization to be bounded, clip normalized values too
-            # Example: [-2, 5] means -16dB -> -2, 40dB -> 5 when tgt=8
-            norm_clip_low = -2.0
-            norm_clip_high = 5.0
+        tgt = float(getattr(self.reward_cfg, "sinr_target_db", 8.0))
+        tgt = max(tgt, 1e-6)
     
-            for tx in range(n_tx):
-                idx = np.where(best_tx == tx)[0]
-                per_tx_load_list.append(int(len(idx)))
-                if len(idx) == 0:
-                    continue
+        # dB clipping to avoid pathological outliers dominating reward
+        clip_low = -20.0
+        clip_high = 40.0
+        norm_clip_low = -2.0
+        norm_clip_high = 5.0
     
-                s = best_sinr[idx]
+        best_sinr_clip = np.clip(best_sinr, clip_low, clip_high)
+        s_max_n = float(np.clip(np.max(best_sinr_clip) / tgt, norm_clip_low, norm_clip_high))
+        s_mean_n = float(np.clip(np.mean(best_sinr_clip) / tgt, norm_clip_low, norm_clip_high))
+        s_min_n = float(np.clip(np.min(best_sinr_clip) / tgt, norm_clip_low, norm_clip_high))
+        sinr_score_norm = (
+            self.reward_cfg.w_sinr_max * s_max_n
+            + self.reward_cfg.w_sinr_mean * s_mean_n
+            + self.reward_cfg.w_sinr_min * s_min_n
+        )
     
-                # Raw (still useful for debugging)
-                s_max = float(np.max(s))
-                s_mean = float(np.mean(s))
-                s_min = float(np.min(s))
-                sinr_score_raw += (
-                    self.reward_cfg.w_sinr_max * s_max
-                    + self.reward_cfg.w_sinr_mean * s_mean
-                    + self.reward_cfg.w_sinr_min * s_min
-                )
-    
-                # Normalized + clipped
-                s_clip = np.clip(s, clip_low, clip_high)
-                s_max_n = float(np.clip(np.max(s_clip) / tgt, norm_clip_low, norm_clip_high))
-                s_mean_n = float(np.clip(np.mean(s_clip) / tgt, norm_clip_low, norm_clip_high))
-                s_min_n = float(np.clip(np.min(s_clip) / tgt, norm_clip_low, norm_clip_high))
-                sinr_score_norm += (
-                    self.reward_cfg.w_sinr_max * s_max_n
-                    + self.reward_cfg.w_sinr_mean * s_mean_n
-                    + self.reward_cfg.w_sinr_min * s_min_n
-                )
-    
-            per_tx_load = np.asarray(per_tx_load_list, dtype=np.float32)
-            if len(per_tx_load) >= self.n_uav:
-                per_uav_load = per_tx_load[: self.n_uav].copy()
-            else:
-                per_uav_load = np.zeros((self.n_uav,), dtype=np.float32)
-    
-        load_var = float(np.var(per_tx_load)) if len(per_tx_load) > 1 else 0.0
-    
-        # Use normalized coverage + normalized sinr score (this is the key change)
+        # --- Final reward ---
         reward = (
             self.reward_cfg.w_coverage * float(coverage_frac)
             + float(sinr_score_norm)
@@ -655,16 +826,13 @@ class SionnaPlacementEnv(gym.Env):
         )
     
         info = {
-            # Coverage
             "coverage_count": int(coverage_count),
             "coverage_frac": float(coverage_frac),
     
-            # SINR diagnostics
             "sinr_target_db": float(getattr(self.reward_cfg, "sinr_target_db", 8.0)),
             "sinr_score_raw": float(sinr_score_raw),
             "sinr_score_norm": float(sinr_score_norm),
     
-            # Load diagnostics
             "load_var": float(load_var),
             "per_tx_load": per_tx_load,
             "per_uav_load": per_uav_load,
@@ -723,12 +891,273 @@ class SionnaPlacementEnv(gym.Env):
     def _get_uav_xyz(self) -> np.ndarray:
         return np.asarray([u.pos for u in self.env_raw.uavs], dtype=np.float32)
 
+    # def _get_gu_xyz(self) -> np.ndarray:
+    #     gus = getattr(self.env_raw, "gus", [])
+    #     out = []
+    #     for g in gus:
+    #         if hasattr(g, "getTimestampPosition"):
+    #             out.append(g.getTimestampPosition(getattr(self.env_raw, "cur_step", 0)))
+    #         else:
+    #             out.append(getattr(g, "pos"))
+    #     return np.asarray(out, dtype=np.float32)
+
     def _get_gu_xyz(self) -> np.ndarray:
+        """
+        Always return GU positions as (n_gu, 3) float32.
+    
+        Notes:
+          - Your GroundUser stores XY-only in gu.positions and getTimestampPosition()/getCurrentPosition()
+            returns shape (2,). So we must append z explicitly.
+          - During CSV-driven evaluation, _set_gu_xyz_from_csv() caches z into gu._csv_z (recommended).
+          - Fallback z priority: gu._csv_z -> gu.height -> self.gu_height -> cfg default 1.5
+        """
+        assert self.env_raw is not None, "Call reset() before _get_gu_xyz()."
+    
         gus = getattr(self.env_raw, "gus", [])
-        out = []
-        for g in gus:
+        n = len(gus)
+        out = np.zeros((n, 3), dtype=np.float32)
+    
+        # robust default z
+        default_z = float(getattr(self, "gu_height", 1.5))
+    
+        t = int(getattr(self.env_raw, "cur_step", 0))
+    
+        for i, g in enumerate(gus):
+            # ---- XY ----
+            xy = None
             if hasattr(g, "getTimestampPosition"):
-                out.append(g.getTimestampPosition(getattr(self.env_raw, "cur_step", 0)))
+                xy = g.getTimestampPosition(t)
+            elif hasattr(g, "getCurrentPosition"):
+                xy = g.getCurrentPosition()
+            elif hasattr(g, "positions"):
+                p = np.asarray(g.positions, dtype=np.float32)
+                xy = p[0] if p.ndim == 2 and p.shape[0] > 0 else p.reshape(-1)[:2]
+            elif hasattr(g, "pos"):
+                xy = getattr(g, "pos")
+    
+            xy = np.asarray(xy, dtype=np.float32).reshape(-1)
+            if xy.size < 2:
+                raise ValueError(f"GU[{i}] position has invalid shape: {xy.shape}")
+    
+            x = float(xy[0])
+            y = float(xy[1])
+    
+            # ---- Z ----
+            z = float(getattr(g, "_csv_z", getattr(g, "height", default_z)))
+    
+            out[i, 0] = x
+            out[i, 1] = y
+            out[i, 2] = z
+    
+        return out
+
+
+
+    def set_gu_xyz(self, gu_xyz: np.ndarray) -> None:
+        """Public setter: call this BEFORE building obs/predict/step in evaluation."""
+        self._set_gu_xyz_from_csv(gu_xyz)
+
+    # def _set_gu_xyz_from_csv(self, gu_xyz: np.ndarray) -> None:
+    #     """
+    #     Force-update GU positions at current time step using external (CSV-driven) positions.
+    #     gu_xyz: (n_gu, 3)
+    #     """
+    #     assert self.env_raw is not None, "Call reset() before set_gu_xyz()."
+    
+    #     gu_xyz = np.asarray(gu_xyz, dtype=np.float32)
+    #     if gu_xyz.ndim != 2 or gu_xyz.shape[1] != 3:
+    #         raise ValueError(f"gu_xyz must be (n_gu,3), got {gu_xyz.shape}")
+    
+    #     if int(gu_xyz.shape[0]) != int(self.n_gu):
+    #         raise ValueError(f"gu_xyz n_gu mismatch: expected {self.n_gu}, got {gu_xyz.shape[0]}")
+    
+    #     if not hasattr(self.env_raw, "gus"):
+    #         raise AttributeError("env_raw has no attribute 'gus'")
+    
+    #     if len(self.env_raw.gus) != self.n_gu:
+    #         raise ValueError(f"env_raw.gus length mismatch: expected {self.n_gu}, got {len(self.env_raw.gus)}")
+    
+    #     for i in range(self.n_gu):
+    #         x, y, z = float(gu_xyz[i, 0]), float(gu_xyz[i, 1]), float(gu_xyz[i, 2])
+    
+    #         gu = self.env_raw.gus[i]
+    
+    #         # keep GU internal time_step stable
+    #         if hasattr(gu, "time_step"):
+    #             gu.time_step = 0
+    
+    #         # update GU.positions so getCurrentPosition() stays consistent
+    #         if hasattr(gu, "positions"):
+    #             # GU.positions is XY-only in your class; store as (1,2)
+    #             try:
+    #                 gu.positions = np.asarray([[x, y]], dtype=np.float32)
+    #             except Exception:
+    #                 pass
+    
+    #         # update device position used by Sionna/Mitsuba
+    #         if hasattr(gu, "device") and hasattr(gu.device, "position"):
+    #             if mi is None:
+    #                 raise ImportError("mitsuba (mi) not available, cannot set gu.device.position")
+    #             gu.device.position = mi.Point3f([x, y, float(getattr(gu, "height", z))])
+
+    def _set_gu_xyz_from_csv(self, gu_xyz: np.ndarray) -> None:
+        """
+        Force-update GU positions at current time step using external (CSV-driven) positions.
+    
+        Accepts:
+          gu_xyz: (n_gu,2) or (n_gu,3)
+    
+        Guarantees:
+          - GU XY is updated (gu.positions stays XY-only as required by GroundUser)
+          - env will be able to build obs with GU as 3D later (see _get_gu_xyz fix below)
+          - If mitsuba (mi) is not available, silently skip gu.device.position update
+        """
+        assert self.env_raw is not None, "Call reset() before set_gu_xyz()."
+    
+        gu_xyz = np.asarray(gu_xyz, dtype=np.float32)
+        if gu_xyz.ndim != 2 or gu_xyz.shape[0] != int(self.n_gu) or gu_xyz.shape[1] not in (2, 3):
+            raise ValueError(f"gu_xyz must be (n_gu,2) or (n_gu,3), got {gu_xyz.shape}, n_gu={self.n_gu}")
+    
+        if not hasattr(self.env_raw, "gus"):
+            raise AttributeError("env_raw has no attribute 'gus'")
+        if len(self.env_raw.gus) != int(self.n_gu):
+            raise ValueError(f"env_raw.gus length mismatch: expected {self.n_gu}, got {len(self.env_raw.gus)}")
+    
+        # default z if not provided
+        default_z = float(getattr(self, "gu_height", 1.5))
+    
+        for i in range(int(self.n_gu)):
+            x = float(gu_xyz[i, 0])
+            y = float(gu_xyz[i, 1])
+            z = float(gu_xyz[i, 2]) if gu_xyz.shape[1] == 3 else default_z
+    
+            gu = self.env_raw.gus[i]
+    
+            # keep GU internal time_step stable
+            if hasattr(gu, "time_step"):
+                gu.time_step = 0
+    
+            # GroundUser.positions is XY-only: store as (1,2)
+            if hasattr(gu, "positions"):
+                try:
+                    gu.positions = np.asarray([[x, y]], dtype=np.float32)
+                except Exception:
+                    pass
+    
+            # store z somewhere so _get_gu_xyz can reconstruct 3D even though positions is XY-only
+            # (this avoids changing GroundUser implementation)
+            try:
+                gu._csv_z = z
+            except Exception:
+                pass
+    
+            # update device position used by Sionna/Mitsuba if available
+            if hasattr(gu, "device") and hasattr(gu.device, "position"):
+                # do NOT hard-require mitsuba in evaluation
+                if "mi" in globals() and (globals().get("mi", None) is not None):
+                    mi_local = globals()["mi"]
+                    gu.device.position = mi_local.Point3f([x, y, float(getattr(gu, "height", z))])
+                else:
+                    # mitsuba not available: skip device update
+                    pass
+
+    
+    def reset(self, *, seed: Optional[int] = None, options: Optional[Dict[str, Any]] = None):
+        super().reset(seed=seed)
+        if seed is not None:
+            self.seed_value = int(seed)
+    
+        self._t = 0
+        self._gu_override_active = False  # optional flag, not required
+    
+        self.env_raw = Environment(
+            self.scene_xml,
+            position_df_path=None,
+            time_step=1,
+            ped_height=self.gu_height,
+            ped_rx=True,
+        )
+    
+        # (Recommended) ensure arrays exist before first radiomap
+        try:
+            self.env_raw.setTransmitterArray(None)
+            self.env_raw.setReceiverArray(None)
+        except Exception:
+            pass
+    
+        init_xyz = self._get_uav_init_xyz()
+        for i in range(self.n_uav):
+            self.env_raw.addUAV(
+                mass=10,
+                efficiency=0.8,
+                pos=np.asarray(init_xyz[i], dtype=np.float32),
+                vel=np.zeros(3, dtype=np.float32),
+                color=np.array([1.0, 0.2, 0.2]),
+                bandwidth=50,
+                rotor_area=0.5,
+                signal_power=3.0,
+            )
+    
+        for i in range(len(self.env_raw.uavs)):
+            if hasattr(self.env_raw.uavs[i], "lookAt"):
+                self.env_raw.uavs[i].lookAt()
+    
+        self._add_base_stations()
+        self._spawn_gus_outside_buildings()
+    
+        obs = self._build_obs()
+        info: Dict[str, Any] = {}
+        return obs, info
+    
+    
+    def step(self, action: np.ndarray):
+        assert self.env_raw is not None, "Call reset() before step()."
+        self._t += 1
+    
+        # Action -> absolute UAV positions (n_uav,3)
+        target_xyz, invalid_mask = self._sanitize_uav_positions(action)
+    
+        # Apply UAV positions
+        cur_xyz = self._get_uav_xyz()
+        for i in range(self.n_uav):
+            if hasattr(self.env_raw, "moveAbsUAV"):
+                self.env_raw.moveAbsUAV(i, target_xyz[i], target_xyz[i] - cur_xyz[i])
             else:
-                out.append(getattr(g, "pos"))
-        return np.asarray(out, dtype=np.float32)
+                self.env_raw.uavs[i].pos = target_xyz[i]
+    
+        # One-step: compute radiomap + SINR
+        radio_map = self._compute_radiomap()
+        if self.n_gu > 0:
+            sinr_db_gu_tx = np.asarray(self.env_raw.getUserSINRS(radio_map), dtype=np.float32)
+        else:
+            sinr_db_gu_tx = np.zeros((0, getattr(self.env_raw, "n_tx", 0)), dtype=np.float32)
+    
+        reward, rinfo = self._compute_reward(sinr_db_gu_tx)
+    
+        # Invalid UAV penalty
+        invalid_uav_count = int(np.sum(invalid_mask))
+        if invalid_uav_count > 0:
+            reward -= float(self.reward_cfg.w_invalid_pos) * float(invalid_uav_count)
+    
+        obs = self._build_obs()
+    
+        # Episode length control (train: 1; eval: e.g., 50)
+        env_cfg = self.cfg.get("env", {}) if isinstance(self.cfg, dict) else {}
+        max_steps = int(env_cfg.get("max_steps", 1))
+        terminated = False
+        truncated = bool(self._t >= max_steps)
+    
+        # Debug return controls
+        dbg = self.cfg.get("debug", {}) if isinstance(self.cfg, dict) else {}
+        return_radiomap = bool(dbg.get("return_radiomap", False))
+        return_sinr = bool(dbg.get("return_sinr", False))
+    
+        info = {**rinfo, "invalid_uav_count": invalid_uav_count}
+    
+        if return_sinr:
+            info["sinr_db_gu_tx"] = sinr_db_gu_tx  # safe (numpy)
+        if return_radiomap:
+            info["radio_map"] = radio_map  # heavy; eval-only
+    
+        return obs, float(reward), bool(terminated), bool(truncated), info
+

@@ -142,7 +142,6 @@ class RandomUAVBaseline:
 # -------------------------
 # Evaluation helper
 # -------------------------
-
 def eval_baseline_over_traj(
     cfg: Dict[str, Any],
     traj_by_t: Dict[int, np.ndarray],
@@ -158,20 +157,64 @@ def eval_baseline_over_traj(
     bs_signal_power_w: float = 1.0,
     bs_bandwidth_mbps: float = 50.0,
     verbose: bool = False,
+    print_scene_path: bool = True,
+    store_uav_positions: str = "json",   # "none" | "json" | "columns"
 ) -> pd.DataFrame:
     """
     Evaluate a baseline over a GU trajectory using Sionna-based SINR computation.
 
-    This uses lazy imports to avoid module import errors when the project root is not
+    Parameters
+    ----------
+    print_scene_path:
+        If True, prints the resolved scene XML path once at the beginning.
+    store_uav_positions:
+        - "none": do not store UAV positions.
+        - "json": store uav_xyz as a JSON string column "uav_xyz".
+        - "columns": expand into columns uav{i}_x, uav{i}_y, uav{i}_z.
+
+    Notes
+    -----
+    Uses lazy imports to avoid module import errors when the project root is not
     yet on sys.path at import-time.
     """
     # Lazy import (prevents ModuleNotFoundError at baseline_utils import time)
     from eval_tools.model_a.model_a_functions import compute_sinr_db_gu_tx, compute_metrics_from_sinr
 
+    # Print scene path once for sanity check
+    if print_scene_path:
+        scene_path = None
+        if isinstance(cfg.get("scene", None), dict):
+            for k in ("scene_path", "path", "xml_path", "scene_file", "scene_xml"):
+                if isinstance(cfg["scene"].get(k, None), str) and cfg["scene"][k].strip():
+                    scene_path = cfg["scene"][k]
+                    break
+        if scene_path is None:
+            # fallback to top-level keys
+            for k in ("scene_path", "scene_xml"):
+                if isinstance(cfg.get(k, None), str) and cfg[k].strip():
+                    scene_path = cfg[k]
+                    break
+
+        print(f"[eval_baseline_over_traj] baseline={baseline.__class__.__name__}")
+        print(f"[eval_baseline_over_traj] cfg scene xml: {scene_path}")
+
     rows = []
+
+    # Optional: determine n_uav for column expansion
+    n_uav = None
+    if store_uav_positions == "columns":
+        # try infer from cfg first, otherwise infer from baseline at t_start
+        if isinstance(cfg.get("uav", None), dict) and "n_uav" in cfg["uav"]:
+            try:
+                n_uav = int(cfg["uav"]["n_uav"])
+            except Exception:
+                n_uav = None
+        if n_uav is None:
+            n_uav = int(np.asarray(baseline.get_uav_xyz(t_start)).shape[0])
+
     for t in range(t_start, t_end + 1):
         gu_xyz = traj_by_t[int(t)]
-        uav_xyz = baseline.get_uav_xyz(t)
+        uav_xyz = np.asarray(baseline.get_uav_xyz(t), dtype=np.float32)
 
         sinr_db = compute_sinr_db_gu_tx(
             cfg=cfg,
@@ -189,10 +232,28 @@ def eval_baseline_over_traj(
 
         metrics = compute_metrics_from_sinr(cfg=cfg, sinr_db_gu_tx=sinr_db)
 
-        row = {"t": int(t), "baseline": baseline.__class__.__name__}
+        row: Dict[str, Any] = {"t": int(t), "baseline": baseline.__class__.__name__}
+
+        # Store UAV positions
+        if store_uav_positions == "json":
+            # JSON-serializable string; easy to save to CSV and load back
+            row["uav_xyz"] = json.dumps(uav_xyz.tolist())
+        elif store_uav_positions == "columns":
+            # Expand to uav{i}_x/y/z
+            for i in range(n_uav):
+                row[f"uav{i}_x"] = float(uav_xyz[i, 0])
+                row[f"uav{i}_y"] = float(uav_xyz[i, 1])
+                row[f"uav{i}_z"] = float(uav_xyz[i, 2])
+        elif store_uav_positions == "none":
+            pass
+        else:
+            raise ValueError(f"Unknown store_uav_positions: {store_uav_positions}")
+
+        # Keep only scalar metrics (CSV-friendly)
         for k, v in metrics.items():
             if isinstance(v, (int, float, np.integer, np.floating)):
                 row[k] = float(v)
+
         rows.append(row)
 
     return pd.DataFrame(rows)

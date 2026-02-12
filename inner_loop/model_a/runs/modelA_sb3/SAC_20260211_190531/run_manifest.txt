@@ -1,0 +1,5 @@
+timestamp: 2026-02-11T19:05:31.376623
+cfg_path: /data/jhuang52/Projects/metaRL_merged/inner_loop/model_a/configs/raleigh_modelA.json
+cwd: /data/jhuang52/Projects/metaRL_merged/inner_loop/model_a
+python: /home/jhuang52/miniconda3/envs/modelA_sb3/bin/python
+argv: train_sb3.py --cfg configs/raleigh_modelA.json
