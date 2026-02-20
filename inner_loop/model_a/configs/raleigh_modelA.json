@@ -45,7 +45,7 @@
 
   "radiomap": {
     "max_depth": 2,
-    "num_samples": 20000,
+    "num_samples": 500000,
     "cell_size": [5.0, 5.0]
   },
 

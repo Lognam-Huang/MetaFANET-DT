@@ -333,7 +333,20 @@ def main(cfg_path: str, seed: int = 0, do_check_env: bool = True):
 
     # 2) env info logger callback (these will appear in TB/W&B)
     #    You can add more keys later if your env returns them.
-    env_info_keys = ["coverage_count", "load_var", "invalid_uav_count", "per_uav_load"]
+    # env_info_keys = ["coverage_count", "load_var", "invalid_uav_count", "per_uav_load"]
+    env_info_keys = [
+      "coverage_count",
+      "coverage_frac",
+      "load_var",
+      "invalid_uav_count",
+      "per_uav_load",
+      "sinr_score_raw",
+      "sinr_score_norm",
+      "best_sinr_db_mean",
+      "best_sinr_db_min",
+      "best_sinr_db_max",
+    ]
+
     callbacks.append(EnvInfoLoggerCallback(keys=env_info_keys, prefix="env", log_freq=1))
 
     # 3) wandb callback (optional)

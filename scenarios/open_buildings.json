@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "source_dir": "/home/jhuang52/Projects/metaRL_merged/scenarios/raleigh_scene/meshes",
+    "pattern": "*-roof.ply",
+    "num_roof_files": 895,
+    "files": [
+    ],
+    "num_components_total": 924,
+    "num_components_kept": 924,
+    "num_components_dropped": 0,
+    "assumption": "Each connected component in each roof mesh approximates one roof part; building volume extrudes to zmin.",
+    "footprint_method": "convex_hull_2d (monotonic chain)"
+  },
+  "buildings": [
+     {
+      "xmin": 253.8597869873047,
+      "xmax": 272.32745361328125,
+      "ymin": 484.471923828125,
+      "ymax": 495.70355224609375,
+      "zmin": 0.0,
+      "zmax": 4.650027751922607,
+      "center": [
+        263.09362030029297,
+        490.0877380371094,
+        2.3250138759613037
+      ],
+      "size": [
+        18.467666625976562,
+        11.23162841796875,
+        4.650027751922607
+      ],
+      "building_id": "213_North_Bloodworth_Apartments-roof__element_00000",
+      "num_parts": 1,
+      "footprint": [
+        [
+          253.8597869873047,
+          487.14306640625
+        ],
+        [
+          260.9128112792969,
+          485.1617736816406
+        ],
+        [
+          271.99346923828125,
+          484.471923828125
+        ],
+        [
+          272.32745361328125,
+          489.74847412109375
+        ],
+        [
+          271.6319580078125,
+          493.6446533203125
+        ],
+        [
+          261.68011474609375,
+          495.2473449707031
+        ],
+        [
+          254.39234924316406,
+          495.70355224609375
+        ]
+      ],
+      "roof_zmax": 4.650027751922607,
+      "source_ply": "/home/jhuang52/Projects/metaRL_merged/scenarios/raleigh_scene/meshes/213_North_Bloodworth_Apartments-roof.ply"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<scene version="2.1.0">
+  <integrator type="path" id="elm__0" name="elm__0">
+    <integer name="max_depth" value="12"/>
+  </integrator>
+
+  <bsdf type="twosided" id="mat-itu_concrete" name="mat-itu_concrete">
+    <bsdf type="diffuse" name="bsdf">
+      <rgb name="reflectance" value="0.800000 0.800000 0.800000"/>
+    </bsdf>
+  </bsdf>
+
+  <bsdf type="twosided" id="mat-itu_wet_ground" name="mat-itu_wet_ground">
+    <bsdf type="diffuse" name="bsdf">
+      <rgb name="reflectance" value="0.800000 0.800000 0.800000"/>
+    </bsdf>
+  </bsdf>
+
+  <!-- Ground plane mesh -->
+  <shape type="ply" id="ground" name="ground">
+    <string name="filename" value="meshes/ground_2000.ply"/>
+    <ref id="mat-itu_wet_ground" name="bsdf"/>
+    <boolean name="face_normals" value="true"/>
+  </shape>
+</scene>

@@ -45,7 +45,7 @@
 
   "radiomap": {
     "max_depth": 2,
-    "num_samples": 20000,
+    "num_samples": 1000000,
     "cell_size": [5.0, 5.0]
   },
 
@@ -94,7 +94,7 @@
   "wandb": {
     "enabled": true,
     "project": "metaRL_modelA",
-    "name": "raleigh_sac_v1",
+    "name": "raleigh_sac_v2",
     "tags": ["modelA", "raleigh", "sb3"]
   }
 }
